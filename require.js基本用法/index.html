@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>require.js</title>
+</head>
+<body>
+
+<div>asdasd</div>
+
+<script src="js/libs/require.js"></script>
+
+<script>
+require.config({
+	paths:{
+		'jquery': "js/libs/jquery.min"
+	}
+});
+
+require(['jquery','js/pages/a'],function(){
+	console.log("js加载完毕...");
+});
+</script>
+
+</body>
+</html>

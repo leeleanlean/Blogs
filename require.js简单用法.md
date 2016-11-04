@@ -10,12 +10,12 @@
 
 ##require.js的用法
 
-1. 下载[require.js](http://requirejs.org/)
-2. 加载require.js文件
+*  下载[require.js](http://requirejs.org/)
+*  加载require.js文件
 ```
 <script src="js/libs/require.js"></script>
 ```
-3. 用require(['','',''])引入所需js文件
+*  用require(['','',''])引入所需js文件
 ```
 require(['js/jquery','js/a'],function(){
 	console.log("js加载完毕...");

@@ -29,9 +29,9 @@ gulpfile.js
 
 ```
 var gulp = require("gulp");
-var minify = require('gulp-minify-css');  // 压缩css
-var uglify = require('gulp-uglify');      // 压缩js
-var jshint = require('gulp-jshint');      // 检查js
+var minify = require('gulp-minify-css');   // 压缩css
+var uglify = require('gulp-uglify');       // 压缩js
+var jshint = require('gulp-jshint');       // 检查js
 
 // htmlmin
 var htmlmin = require('gulp-htmlmin');

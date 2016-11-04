@@ -10,7 +10,7 @@
 
 ##require.js的用法
 
-* 下载require.js
+* 下载[require.js](http://requirejs.org/)
 * 加载require.js文件
 * 用require(['','',''])引入所需js文件
 

@@ -25,7 +25,7 @@ gulp.task("default",function(){
 
 ##运行gulp命令即可打印出gulp is running...
 
-gulpfile.js
+gulpfile.js:
 
 ```
 var gulp = require("gulp");
@@ -97,7 +97,7 @@ gulp.task('default',function(){
 });
 ```
 
-gulpfile.js
+gulpfile.js:
 
 ```
 var gulp = require("gulp");

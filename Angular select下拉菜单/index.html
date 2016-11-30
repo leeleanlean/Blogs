@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Document</title>
+<script src="angular.min.js"></script>
+</head>
+<body>
+
+
+<div ng-app="app" ng-controller="leelean">
+
+	<select>
+		<option ng-repeat="name in name" value="{{name}}">{{name}}</option>
+	</select>
+
+	<select ng-model="" ng-options="x for x in name">
+		<option value="">全部</option>
+	</select>
+
+</div>
+
+<script>
+var app = angular.module("app",[]);
+
+app.controller('leelean', ['$scope', function($scope){
+	$scope.name = ["111","222","333"];
+}])
+</script>
+
+</body>
+</html>

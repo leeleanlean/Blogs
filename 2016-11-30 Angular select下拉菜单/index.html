@@ -7,15 +7,28 @@
 </head>
 <body>
 
-
 <div ng-app="app" ng-controller="leelean">
+
+	<h3>单个select：</h3>
 
 	<select>
 		<option ng-repeat="name in name" value="{{name}}">{{name}}</option>
 	</select>
 
-	<select ng-model="" ng-options="x for x in name">
+	<select ng-model="seletedNum" ng-options="x for x in name">
 		<option value="">全部</option>
+	</select>
+
+	<h3>联动select：</h3>
+	<select ng-model="select1" ng-options="x.name for x in location">
+		<option value="">选择国家</option>
+	</select>
+	<select ng-model="select2" ng-options="x.name for x in select1.childs">
+		<option value="">选择省份</option>
+	</select>
+	<select>
+		<option>选择城市</option>
+		<option ng-repeat="city in select2.childs" value="{{city.name}}">{{city.name}}</option>
 	</select>
 
 </div>
@@ -25,6 +38,64 @@ var app = angular.module("app",[]);
 
 app.controller('leelean', ['$scope', function($scope){
 	$scope.name = ["111","222","333"];
+
+	$scope.location = [
+		{
+			name:"中国",
+			childs:[
+				{
+					name:"河南",
+					childs:[
+						{
+							name:"郑州"
+						},
+						{
+							name:"开封"
+						}
+					]
+				},
+				{
+					name:"湖北",
+					childs:[
+						{
+							name:"武汉"
+						},
+						{
+							name:"武昌"
+						}
+					]
+				}
+			]
+		},
+		{
+			name:"美国",
+			childs:[
+				{
+					name:"加州",
+					childs:[
+						{
+							name:"加利福尼"
+						},
+						{
+							name:"加利福尼亚洲"
+						}
+					]
+				},
+				{
+					name:"佛州",
+					childs:[
+						{
+							name:"弗洛李大"
+						},
+						{
+							name:"佛罗里达"
+						}
+					]
+				}
+			]
+		}
+	]
+
 }])
 </script>
 

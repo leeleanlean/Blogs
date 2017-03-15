@@ -89,6 +89,12 @@ router.post('/postFile', upload.single('files'), function(req, res, next) {
                     console.log('文件删除成功');
                 }
             });
+
+            var url = 'http://' + req.headers.host + '/' + req.file.originalname;
+
+            // 将上传后的地址返回给前端
+            res.json({code:1,url:url});
+            
         }
     });
 

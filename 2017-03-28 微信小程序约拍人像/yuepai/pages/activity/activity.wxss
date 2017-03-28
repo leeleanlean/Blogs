@@ -1,0 +1,67 @@
+/**base.wxss**/
+page{
+  background-color: #eee; font-size:28rpx; line-height: 1.5; color: #303030; font-family: 'MicroSoft Yahei';
+}
+
+section,article,header,ul,li,dl,dt,dd,p{
+  display:block;
+}
+
+image{
+  margin-bottom: -5px; max-width:100%;
+}
+
+.pull-left{
+  float:left;
+}
+.pull-right{
+  float:right;
+}
+.clearfix {
+  clear:both;
+  overflow:hidden;
+}
+
+/**activity.wxss**/
+.activity{
+  padding-bottom: .1rem;
+}
+.activity article {
+  margin-bottom: .5rem;
+}
+.activity article:first-child{
+  margin-top:.5rem;
+}
+.activity article dl {
+  position: relative;
+  padding-left: .5rem;
+  padding: .5rem;
+  border-bottom: 1px solid #ddd;
+  background-color: #fff;
+}
+.activity article dl:active{
+  background-color: #f5f5f5;
+}
+.activity article dl:last-child {
+  border-bottom: none;
+}
+.activity article dl .end {
+  position: absolute;
+  bottom: 0;
+  right: .5rem;
+}
+.activity article .info-img {
+  width: 40%;
+}
+.activity article .info-intro {
+  width: 60%;
+  padding: 0 0 0 .5rem;
+  box-sizing:border-box;
+}
+.activity article .info-intro text{
+  font-size:30rpx;
+}
+.activity article .info-intro p {
+  color: #777;
+  font-size:26rpx;
+}

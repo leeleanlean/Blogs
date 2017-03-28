@@ -1,0 +1,42 @@
+<section class="user">
+	<header class="clearfix">
+		<image style="width: 130rpx; height: 130rpx;" src="../../images/img.jpg"></image>
+		<div class="information">
+			<text>LeeLean</text>
+			<text>上海</text>
+			<text>15921570000</text>
+		</div>
+	</header>
+	<ul>
+		<navigator url="../logs/logs">
+			<li>修改资料 <image style="width: 35rpx; height: 35rpx;" src="../../images/right.png"></image></li>
+		</navigator>
+	</ul>
+	<ul>
+		<navigator url="../logs/logs">
+			<li>我的收藏 <image style="width: 35rpx; height: 35rpx;" src="../../images/right.png"></image></li>
+		</navigator>
+		<navigator url="../logs/logs">
+			<li>我的活动 <image style="width: 35rpx; height: 35rpx;" src="../../images/right.png"></image></li>
+		</navigator>
+		<navigator url="../logs/logs">
+			<li>我的列表 <image style="width: 35rpx; height: 35rpx;" src="../../images/right.png"></image></li>
+		</navigator>
+	</ul>
+	<ul>
+		<navigator url="../logs/logs">
+			<li>登录 <image style="width: 35rpx; height: 35rpx;" src="../../images/right.png"></image></li>
+		</navigator>
+		<navigator url="../logs/logs">
+			<li>注册 <image style="width: 35rpx; height: 35rpx;" src="../../images/right.png"></image></li>
+		</navigator>
+		<navigator url="../logs/logs">
+			<li>关于我们 <image style="width: 35rpx; height: 35rpx;" src="../../images/right.png"></image></li>
+		</navigator>
+	</ul>
+	<ul>
+		<navigator url="../logs/logs">
+			<li>退出登录 <image style="width: 35rpx; height: 35rpx;" src="../../images/right.png"></image></li>
+		</navigator>
+	</ul>
+</section>

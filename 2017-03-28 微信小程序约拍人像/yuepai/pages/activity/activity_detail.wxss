@@ -1,0 +1,77 @@
+/**base.wxss**/
+page{
+  background-color: #eee; font-size:28rpx; line-height: 1.5; color: #303030; font-family: 'MicroSoft Yahei';
+}
+
+section,article,aside,header,ul,li,dl,dt,dd,p{
+  display:block;
+}
+
+image{
+  margin-bottom: -5px; max-width:100%;
+}
+
+.pull-left{
+  float:left;
+}
+.pull-right{
+  float:right;
+}
+.clearfix {
+  clear:both;
+  overflow:hidden;
+}
+
+/**activity_detail.wxss**/
+.m-tb10{
+  margin: .5rem 0;
+}
+.bg-fff{
+  background-color: #fff;
+}
+.color_e74e3d{
+  color: #e74e3d;
+}
+.activity_detail {
+  padding-bottom: 70rpx;
+}
+.activity_detail .activity-list-img image{
+  width: 100%;
+}
+.activity_detail .activity-list-title {
+  padding: .7rem .7rem .6rem .7rem;
+}
+.activity_detail .activity-list-title text {
+  display:block;
+  margin: 0 0 .6rem 0;
+  font-size: 30rpx;
+  font-weight: bolder;
+}
+.activity_detail .activity-list-title p {
+  color: #e74e3d;
+}
+.activity_detail .activity-list-info {
+  padding: 0 .7rem .8rem .7rem;
+}
+.activity_detail .activity-list-info p {
+  margin: .5rem 0 0 0;
+}
+.activity_detail .activity-list-info text {
+  display:block;
+  border-bottom: 1px solid #e0e0e0;
+  font-size: 30rpx;
+  line-height: 88rpx;
+  font-weight: bolder;
+}
+.activity_detail .activity-list-attend a {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  display: block;
+  height: 88rpx;
+  line-height: 88rpx;
+  background-color: #e74e3d;
+  color: #fff;
+  text-align: center;
+}

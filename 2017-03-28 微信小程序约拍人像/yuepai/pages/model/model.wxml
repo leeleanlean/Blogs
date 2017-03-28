@@ -1,0 +1,62 @@
+<section class="model clearfix">
+	<article class="pull-left">
+		<dl>
+			<dt><image src="../../images/img.jpg" mode="widthFix"></image></dt>
+			<dd>
+				<p class="name">欧美人生</p>
+                <p class="type">类型：小清新</p>
+                <p class="price">价格：免费</p>
+			</dd>
+		</dl>
+	</article>
+	<article class="pull-left">
+		<dl>
+			<dt><image src="../../images/img.jpg" mode="widthFix"></image></dt>
+			<dd>
+				<p class="name">欧美人生</p>
+                <p class="type">类型：小清新</p>
+                <p class="price">价格：免费</p>
+			</dd>
+		</dl>
+	</article>
+	<article class="pull-left">
+		<dl>
+			<dt><image src="../../images/img.jpg" mode="widthFix"></image></dt>
+			<dd>
+				<p class="name">欧美人生</p>
+                <p class="type">类型：小清新</p>
+                <p class="price">价格：免费</p>
+			</dd>
+		</dl>
+	</article>
+	<article class="pull-left">
+		<dl>
+			<dt><image src="../../images/img.jpg" mode="widthFix"></image></dt>
+			<dd>
+				<p class="name">欧美人生</p>
+                <p class="type">类型：小清新</p>
+                <p class="price">价格：免费</p>
+			</dd>
+		</dl>
+	</article>
+	<article class="pull-left">
+		<dl>
+			<dt><image src="../../images/img.jpg" mode="widthFix"></image></dt>
+			<dd>
+				<p class="name">欧美人生</p>
+                <p class="type">类型：小清新</p>
+                <p class="price">价格：免费</p>
+			</dd>
+		</dl>
+	</article>
+	<article class="pull-left">
+		<dl>
+			<dt><image src="../../images/img.jpg" mode="widthFix"></image></dt>
+			<dd>
+				<p class="name">欧美人生</p>
+                <p class="type">类型：小清新</p>
+                <p class="price">价格：免费</p>
+			</dd>
+		</dl>
+	</article>
+</section>

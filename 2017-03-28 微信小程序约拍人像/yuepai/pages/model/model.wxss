@@ -1,0 +1,55 @@
+/**base.wxss**/
+page{
+	background-color: #eee; font-size:28rpx; line-height: 1.5; color: #303030; font-family: 'MicroSoft Yahei';
+}
+
+section,article,header,ul,li,dl,dt,dd,p{
+	display:block;
+}
+
+image{
+	margin-bottom: -5px; max-width:100%;
+}
+
+.pull-left{
+	float:left;
+}
+.pull-right{
+	float:right;
+}
+.clearfix {
+	clear:both;
+	overflow:hidden;
+}
+
+/**index.wxss**/
+.model{
+	padding-top: .5rem;
+}
+.model article{
+	width: 50%; box-sizing:border-box;
+}
+.model article:nth-child(odd){
+	padding: 0 .25rem 0 .5rem;
+}
+.model article:nth-child(even){
+	padding: 0 .5rem 0 .25rem;
+}
+.model article dl{
+	margin-bottom: .5rem; background-color: #fff;
+}
+.model article dl:active{
+	background-color:#f5f5f5;
+}
+.model article dl dt image{
+	width:100%;
+}
+.model article dl dd{
+	padding: .5rem 0;
+}
+.model article dl dd p{
+	padding: 0 .5rem; color: #666; font-size: 26rpx;
+}
+.model article dl dd p.name{
+	margin-bottom: .1rem; font-size: 30rpx;
+}

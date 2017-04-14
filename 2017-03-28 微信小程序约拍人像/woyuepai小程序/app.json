@@ -1,0 +1,53 @@
+{
+    "pages":[
+        "pages/index/index",
+        "pages/case/case",
+        "pages/case/case_detail",
+        "pages/case/case_contact",
+        "pages/activity/activity",
+        "pages/activity/activity_detail",
+        "pages/user/user",
+        "pages/logs/logs"
+    ],
+    "window":{
+        "backgroundTextStyle":"light",
+        "navigationBarBackgroundColor": "#fff",
+        "navigationBarTitleText": "约拍人像",
+        "navigationBarTextStyle":"black",
+        "backgroundColor":"#eee"
+    },
+    "tabBar": {
+        "color":"#444",
+        "selectedColor":"#dd514c",
+        "borderStyle":"white",
+        "backgroundColor":"#f7f7f8",
+        "list":[
+            {
+                "pagePath":"pages/index/index",
+                "iconPath":"images/topbar/topbar1-1.png",
+                "selectedIconPath":"images/topbar/topbar1-2.png",
+                "text":"首页"
+            },
+            {
+                "pagePath":"pages/case/case",
+                "iconPath":"images/topbar/topbar2-1.png",
+                "selectedIconPath":"images/topbar/topbar2-2.png",
+                "text":"作品"
+            },
+            {
+                "pagePath":"pages/activity/activity",
+                "iconPath":"images/topbar/topbar3-1.png",
+                "selectedIconPath":"images/topbar/topbar3-2.png",
+                "text":"活动"
+            },
+            {
+                "pagePath":"pages/user/user",
+                "iconPath":"images/topbar/topbar4-1.png",
+                "selectedIconPath":"images/topbar/topbar4-2.png",
+                "text":"我的"
+            }
+        ]
+    }
+
+
+}

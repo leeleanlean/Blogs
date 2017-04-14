@@ -1,0 +1,36 @@
+/**base.wxss**/
+page{
+	background-color: #eee; font-size:28rpx; line-height: 1.5; color: #303030; font-family: 'MicroSoft Yahei';
+}
+
+section,article,aside,header,div,form,ul,li,dl,dt,dd,p{
+	display:block;
+}
+
+image{
+	margin-bottom: -5px; max-width:100%; width: 100%;
+}
+
+.bg-fff{
+	background-color: #fff;
+}
+
+.pull-left{
+	float:left;
+}
+.pull-right{
+	float:right;
+}
+.clearfix {
+	clear:both; overflow:hidden;
+}
+
+.btn-full{
+	display:block; border-radius: 0; background-color: #e74e3d; text-align: center; border: none; line-height: 88rpx; color:#fff; font-size: 30rpx;
+}
+.btn-fixed-full{
+	position: fixed; bottom: 0; left: 0; right: 0; line-height: 88rpx; text-align: center; color: #fff; background-color: #e74e3d; font-size: 30rpx;
+}
+.btn-full:active,.btn-fixed-full:active{
+	opacity: .9;
+}

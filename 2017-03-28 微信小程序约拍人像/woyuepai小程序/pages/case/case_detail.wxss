@@ -1,0 +1,52 @@
+@import "../common.wxss";
+
+/**case_detail.wxss**/
+.case_detail aside{
+	padding: 15rpx 0; margin: 15rpx 0; background-color: #fff; box-sizing:border-box;
+}
+.case_detail aside dl dt{
+    display: block; float: left; width: 16%; padding: 0 2%;
+}
+.case_detail aside dl dt image{
+	border-radius: 50%;
+}
+.case_detail aside dl dd{
+	display: block; float: left; width: 80%;
+}
+
+.case_detail article ul li{
+	margin-bottom: 15rpx;
+}
+
+.case_detail .cloumn{
+	padding: 0 20rpx;
+}
+.case_detail .cloumn .sub_title{
+	display:block; padding: 15rpx 0; border-bottom: 1px solid #eee; font-size: 30rpx; font-weight: bolder;
+}
+.case_detail .cloumn p{
+	padding: 15rpx 0;
+}
+
+.case_detail .case{
+	margin: 15rpx 0 0 0; padding-bottom:100rpx;
+}
+
+.case_detail .case dl{
+	width: 50%; margin-top: 15rpx; box-sizing:border-box;
+}
+.case_detail .case dl:nth-child(odd){
+	padding-left: 9rpx;
+}
+.case_detail .case dl:nth-child(even){
+	padding-right: 9rpx;
+}
+.case_detail .case dl dd{
+	padding: 5px 0 10px 0;
+}
+.case_detail .case dl text{
+	display: block; margin-top: 5rpx;
+}
+.case_detail .case dl text.title{
+	font-size: 26rpx;
+}

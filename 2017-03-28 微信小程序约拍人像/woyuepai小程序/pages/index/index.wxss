@@ -1,0 +1,40 @@
+@import "../common.wxss";
+
+.login {
+	padding: 40rpx 28rpx 4rpx 28rpx;
+	background-color: #fff;
+}
+.login .form-list {
+	margin-bottom: 40rpx;
+}
+.login .form-list label {
+	display: block;
+	margin-bottom: 12rpx;
+	font-size: 30rpx;
+	font-weight: bolder;
+}
+.login .form-list input {
+	box-sizing: border-box;
+	height: 80rpx;
+	line-height: 80rpx;
+	padding: 0 12rpx;
+	width: 100%;
+	border: 1px solid #e0e0e0;
+	font-family: "MicroSodt Yahei";
+}
+.login .form-list button {
+	width: 100%;
+	border: none;
+	line-height: 80rpx;
+	color: #fff;
+	background-color: #e74e3d;
+}
+.login .form-list textarea {
+	width: 100%;
+	padding: 13rpx 15rpx;
+	box-sizing: border-box;
+	border: 1px solid #e0e0e0;
+}
+.login .form-list:last-child:active {
+	opacity: .9;
+}

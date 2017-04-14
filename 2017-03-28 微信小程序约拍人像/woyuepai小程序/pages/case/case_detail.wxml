@@ -1,0 +1,57 @@
+<section class="case_detail">
+    <aside class="clearfix">
+    	<dl>
+    		<dt><image src="../../images/img.jpg" mode="widthFix"></image></dt>
+    		<dd>
+    			<p>摄影人生</p>
+    			<p>人像、小清新</p>
+    		</dd>
+    	</dl>
+    </aside>
+    <article>
+    	<ul>
+    		<li><image src="../../images/img1.jpg" mode="widthFix"></image></li>
+    		<li><image src="../../images/img1.jpg" mode="widthFix"></image></li>
+    	</ul>
+    </article>
+
+	<section class="cloumn introduce bg-fff">
+		<text class="sub_title">作品介绍</text>
+		<p>摄影师：模特后面直接跟名词 例如 Allow me to introduce a friend to you.让我给你介绍一个朋友摄影师：模特后面直接跟名词 例如 Allow me to introduce a friend to you. 让我给你介绍一个朋友</p>
+	</section>
+
+	<section class="cloumn case clearfix bg-fff">
+		<text class="sub_title">推荐作品</text>
+		<dl class="pull-left">
+			<dt><image src="../../images/img.jpg" mode="widthFix"></image></dt>
+			<dd>
+				<text class="name">摄影人生</text>
+				<text class="title">那天际的云</text>
+			</dd>
+		</dl>
+		<dl class="pull-left">
+			<dt><image src="../../images/img.jpg" mode="widthFix"></image></dt>
+			<dd>
+				<text class="name">摄影人生</text>
+				<text class="title">那天际的云</text>
+			</dd>
+		</dl>
+		<dl class="pull-left">
+			<dt><image src="../../images/img.jpg" mode="widthFix"></image></dt>
+			<dd>
+				<text class="name">摄影人生</text>
+				<text class="title">那天际的云</text>
+			</dd>
+		</dl>
+		<dl class="pull-left">
+			<dt><image src="../../images/img.jpg" mode="widthFix"></image></dt>
+			<dd>
+				<text class="name">摄影人生</text>
+				<text class="title">那天际的云</text>
+			</dd>
+		</dl>
+	</section>
+
+	<div class="btn-fixed-full" bindtap="goCaseContact">预约摄影师</div>
+
+</section>

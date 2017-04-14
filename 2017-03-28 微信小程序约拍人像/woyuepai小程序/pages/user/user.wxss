@@ -1,0 +1,70 @@
+/**base.wxss**/
+page{
+	background-color: #eee; font-size:28rpx; line-height: 1.5; color: #303030; font-family: 'MicroSoft Yahei';
+}
+
+section,article,header,ul,li,dl,dt,dd,p{
+	display:block;
+}
+
+image{
+	margin-bottom: -5px; max-width:100%;
+}
+
+.pull-left{
+	float:left;
+}
+.pull-right{
+	float:right;
+}
+.clearfix {
+	clear:both;
+	overflow:hidden;
+}
+
+/**user.wxss**/
+.user header{
+	position: relative;
+	margin-top: .5rem;
+	padding: .7rem;
+	background-color: #fff;
+}
+.user header:active{
+	background-color: #f5f5f5;
+}
+.user header image{
+	border-radius: 50%;
+}
+.user header .information{
+	position: absolute;
+	width: 100%;
+	top: .7rem;
+	left: 180rpx;
+}
+.user header .information text{
+	display: block;
+	font-size: 28rpx;
+}
+.user ul{
+	margin-top: .5rem;
+	background-color: #fff;
+}
+.user ul navigator{
+	border-bottom: 1px solid #f3f3f3;
+}
+.user ul navigator:last-child{
+	border-bottom: none;
+}
+.user ul li{
+	position:relative;
+	padding: 0 .7rem;
+	line-height: 3;
+}
+.user ul li image{
+	position:absolute;
+	top:25rpx;
+	right:.7rem;
+}
+.user ul li:active{
+	background-color: #f5f5f5;
+}

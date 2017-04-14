@@ -1,0 +1,33 @@
+@import "../common.wxss";
+
+/**index.wxss**/
+.model{
+	padding-top: 15rpx;
+}
+.model article{
+	width: 50%; box-sizing:border-box;
+}
+.model article:nth-child(odd){
+	padding: 0 7.5rpx 0 15rpx;
+}
+.model article:nth-child(even){
+	padding: 0 15rpx 0 7.5rpx;
+}
+.model article dl{
+	margin-bottom: 15rpx; background-color: #fff;
+}
+.model article dl:active{
+	background-color:#f5f5f5;
+}
+.model article dl dt image{
+	width:100%;
+}
+.model article dl dd{
+	padding: 15rpx 0;
+}
+.model article dl dd p{
+	padding: 0 20rpx; color: #666; font-size: 26rpx;
+}
+.model article dl dd p.name{
+	font-size: 30rpx; color:#444;
+}

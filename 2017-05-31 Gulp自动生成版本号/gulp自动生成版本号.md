@@ -1,8 +1,10 @@
-## 安装gulp-rev-append
+## gulp自动生成版本号
+
+1、安装gulp-rev-append
+
 > npm install gulp-rev-append --save-dev
 
-
-1、gulpfile.js
+2、gulpfile.js
 
 ~~~
 var gulp = require('gulp'),
@@ -27,13 +29,13 @@ gulp.task('default', function () {
 });
 ~~~
 
-2、配置html页面
+3、配置html页面
 
 ~~~
 href="css/style.css?rev=@@hash"
 src="js/js-one.js?rev=@@hash"
 ~~~
 
-3、tips
+4、tips
 
 引入的文件的路径必须正确

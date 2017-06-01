@@ -1,0 +1,23 @@
+{
+  "name": "gulp",
+  "version": "1.0.0",
+  "description": "gulp",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "private": true,
+  "devDependencies": {
+    "del": "^2.2.2",
+    "gulp-clean-css": "^3.4.1",
+    "gulp-concat": "^2.6.1",
+    "gulp-htmlmin": "^3.0.0",
+    "gulp-less": "^3.3.0",
+    "gulp-rev-doc": "0.0.4",
+    "gulp-uglify": "^3.0.0",
+    "run-sequence": "^1.2.2",
+    "vinyl-paths": "^2.1.0"
+  }
+}

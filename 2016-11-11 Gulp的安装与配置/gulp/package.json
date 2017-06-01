@@ -19,5 +19,6 @@
     "gulp-rev-doc": "0.0.4",
     "gulp-uglify": "^3.0.0",
     "vinyl-paths": "^2.1.0"
-  }
+  },
+  "wwwroot": "wwwroot"
 }

@@ -7,7 +7,12 @@ var gulp = require("gulp"),
 	less = require("gulp-less"),              // 编译less
 	cssMin = require("gulp-clean-css"),       // 压缩css
 	uglify = require('gulp-uglify'),          // 压缩js
-	revDoc = require('gulp-rev-doc');         // 添加版本号
+	revDoc = require('gulp-rev-doc'),         // 添加版本号
+	config = require('./config.js');          // 引入配置文件
+
+// 资源根目录
+var wwwroot;
+config.wwwroot ? wwwroot = config.wwwroot : wwwroot = "";
 
 // 打包方法
 var teemoGulp = {

@@ -1,6 +1,5 @@
 // 载入插件
 var gulp = require("gulp"),
-	runSequence = require("run-sequence"),    // 按顺序执行任务
 	concat = require("gulp-concat"),          // 多个文件合并一个
 	del = require("del"),                     // 删除文件或者文件夹
 	vinylPaths = require("vinyl-paths");      // 从管道中删除文件
@@ -8,10 +7,71 @@ var gulp = require("gulp"),
 	less = require("gulp-less"),              // 编译less
 	cssMin = require("gulp-clean-css"),       // 压缩css
 	uglify = require('gulp-uglify'),          // 压缩js
-	revDoc = require('gulp-rev-doc');
+	revDoc = require('gulp-rev-doc');         // 添加版本号
 
 // 打包方法
 var teemoGulp = {
+
+	// 编译less、压缩js
+	bulidRes:function(){
+
+		// 设置路径
+		var srcCssPath = "./src/css/**/*.less",
+			disCsstPath = "./dist/css";
+
+		// 执行方法
+		gulp.src(srcCssPath)
+			.pipe(less())
+			.pipe(cssMin())
+			.pipe(gulp.dest(disCsstPath));
+
+		// 设置路径
+		var srcJsPath = "./src/js/**/*.js",
+			distJsPath = "./dist/js";
+
+		// 执行方法
+		gulp.src(srcJsPath)
+			.pipe(uglify())
+			.pipe(gulp.dest(distJsPath));
+
+		// 执行完成提示
+		console.log("------------------------------------------------------------ bulidRes done!!!");
+	},
+
+	// 合并css、js
+	bulidConcat:function(){
+
+		// 设置路径
+		var commonCssPath = "./dist/css",
+			pliginsCssPath = "./dist/css/plugins";
+
+		// 合并css
+		gulp.src([commonCssPath + "/*.css","!"+commonCssPath+"/*.min.css"])
+			.pipe(concat("common.min.css"))
+			.pipe(gulp.dest(commonCssPath));
+
+		// 合并css组件
+		gulp.src([pliginsCssPath + "/*.css","!"+pliginsCssPath+"/*.min.css"])
+			.pipe(concat("plugins.min.css"))
+			.pipe(gulp.dest(pliginsCssPath));
+
+		// 设置路径
+		var commonJsPath = "./dist/js",
+			pliginsJsPath = "./dist/js/plugins";
+
+		// 合并js
+		gulp.src([commonJsPath + "/*.js","!"+commonJsPath+"/*.min.js"])
+			.pipe(concat("common.min.js"))
+			.pipe(gulp.dest(commonJsPath));
+
+		// 合并js组件
+		gulp.src([pliginsJsPath + "/*.js","!"+pliginsJsPath+"/*.min.js"])
+			.pipe(concat("plugins.min.js"))
+			.pipe(gulp.dest(pliginsJsPath));
+
+		// 执行完成提示
+		console.log("------------------------------------------------------------ bulidConcat done!!!");
+	},
 
 	// 打包HTML
 	bulidHtml:function(){
@@ -37,78 +97,16 @@ var teemoGulp = {
 	// 版本号
 	bulidVersion:function(){
 
+		// 设置路径
 		var htmlPath = "./dist/views/";
 
+		// 执行方法
 		gulp.src(htmlPath + "**/*.html")
 		    .pipe(revDoc())
 		    .pipe(gulp.dest(htmlPath));
-	},
-
-	// 编译less
-	bulidCss:function(){
-
-		// 设置路径
-		var srcPath = "./src/css/**/*.less",
-			distPath = "./dist/css";
-
-		// 执行方法
-		gulp.src(srcPath)
-			.pipe(less())
-			.pipe(cssMin())
-			.pipe(gulp.dest(distPath));
 
 		// 执行完成提示
-		console.log("------------------------------------------------------------ bulidCss done!!!");
-	},
-
-	// 合并css
-	bulidConcat:function(){
-
-		// 设置路径
-		var commonCssPath = "./dist/css",
-			pliginsCssPath = "./dist/css/plugins";
-
-		// 合并css
-		gulp.src([commonCssPath + "/*.css","!"+commonCssPath+"/*.min.css"])
-			.pipe(concat("common.min.css"))
-			.pipe(gulp.dest(commonCssPath));
-
-		// 合并组件css
-		gulp.src([pliginsCssPath + "/*.css","!"+pliginsCssPath+"/*.min.css"])
-			.pipe(concat("plugins.min.css"))
-			.pipe(gulp.dest(pliginsCssPath));
-
-		// 设置路径
-		var commonJsPath = "./dist/js",
-			pliginsJsPath = "./dist/js/plugins";
-
-		// 合并js
-		gulp.src([commonJsPath + "/*.js","!"+commonJsPath+"/*.min.js"])
-			.pipe(concat("common.min.js"))
-			.pipe(gulp.dest(commonJsPath));
-
-		// 合并组件js
-		gulp.src([pliginsJsPath + "/*.js","!"+pliginsJsPath+"/*.min.js"])
-			.pipe(concat("plugins.min.js"))
-			.pipe(gulp.dest(pliginsJsPath));
-
-		// 执行完成提示
-		console.log("------------------------------------------------------------ bulidConcat done!!!");
-	},
-
-	// 压缩JS
-	bulidJs:function(){
-
-		// 设置路径
-		var srcPath = "./src/js/**/*.js",
-			distPath = "./dist/js";
-
-		// 执行方法
-		gulp.src(srcPath)
-			.pipe(uglify())
-			.pipe(gulp.dest(distPath));
-
-		console.log("------------------------------------------------------------ bulidJs done!!!");
+		console.log("------------------------------------------------------------ bulidVersion done!!!");
 	},
 
 	// 打包IMG
@@ -133,7 +131,17 @@ var teemoGulp = {
 	}
 };
 
-// 执行打包html方法
+// 编译less、压缩js
+gulp.task("bulid-resource",function(){
+	teemoGulp.bulidRes();
+});
+
+// 合并css、js
+gulp.task("bulid-concat",function(){
+	teemoGulp.bulidConcat();
+});
+
+// 打包HTML
 gulp.task("bulid-html",function(){
 	teemoGulp.bulidHtml();
 });
@@ -143,27 +151,12 @@ gulp.task("bulid-version",function(){
 	teemoGulp.bulidVersion();
 });
 
-// 执行打包css方法
-gulp.task("bulid-css",function(){
-	teemoGulp.bulidCss();
-});
-
-// 执行打包js方法
-gulp.task("bulid-js",function(){
-	teemoGulp.bulidJs();
-});
-
-// 执行合并js方法
-gulp.task("bulid-concat",["bulid-css","bulid-js"],function(){
-	teemoGulp.bulidConcat();
-});
-
-// 执行打包img方法
+// 打包IMG
 gulp.task("bulid-img",function(){
 	teemoGulp.bulidImg();
 });
 
-// 执行clean方法
+// 清理dist下合并文件之外的css、js
 gulp.task("bulid-clean",function(){
 	teemoGulp.bulidClean();
 });
@@ -171,28 +164,26 @@ gulp.task("bulid-clean",function(){
 // help
 gulp.task("help",function(){
 
-	console.log("stept1 ----- gulp-css");
-	console.log("stept1 ----- gulp-js");
-	console.log("stept1 ----- gulp-concat");
-	console.log("stept1 ----- gulp-html");
-	console.log("stept1 ----- gulp-version");
+	console.log(" > stept1 ----- gulp bulid-resource");
+	console.log(" > stept2 ----- gulp bulid-concat");
+	console.log(" > stept3 ----- gulp bulid-html");
+	console.log(" > stept4 ----- gulp bulid-version");
+	console.log(" > stept5 ----- gulp bulid-img");
+	console.log(" > stept6 ----- gulp bulid-clean");
 
 });
 
 // default
 gulp.task('default', function (done) {
-	// runSequence(
-	// 	'help','bulid-css','bulid-js','bulid-html'
-	// );
 
-	gulp.start("bulid-css","bulid-js","bulid-html");
-
+	// 设置路径
 	var cssPath = "src/css/**/*.less",
 		jsPath = "src/js/**/*.js";
 
+	// 监听css、js变化
 	gulp.watch([cssPath,jsPath],function(){
 		console.log("change.......................................");
-		gulp.start("bulid-css","bulid-js","bulid-concat","bulid-version");
+		gulp.start("bulid-resource","bulid-concat","bulid-version");
 	});
 
 });

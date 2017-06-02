@@ -6,41 +6,71 @@ var gulp = require("gulp"),
 	htmlMin = require("gulp-htmlmin"),        // 压缩html
 	less = require("gulp-less"),              // 编译less
 	cssMin = require("gulp-clean-css"),       // 压缩css
-	uglify = require('gulp-uglify'),          // 压缩js
-	revDoc = require('gulp-rev-doc'),         // 添加版本号
-	config = require('./config.js');          // 引入配置文件
+	uglify = require("gulp-uglify"),          // 压缩js
+	revDoc = require("gulp-rev-doc"),         // 添加版本号
+	prefix = require("gulp-prefix"),          // 静态资源添加前缀
+	replace = require("gulp-replace"),        // 替换匹配字符串插件
+	config = require("./config.js");          // 引入配置文件
 
 // 资源根目录
 var wwwroot;
 config.wwwroot ? wwwroot = config.wwwroot : wwwroot = "";
 
 // 打包方法
-var teemoGulp = {
+var leanGulp = {
 
-	// 编译less、压缩js
+	// 编译less、压缩js、html
 	bulidRes:function(){
 
 		// 设置路径
 		var srcCssPath = "./src/css/**/*.less",
-			disCsstPath = "./dist/css";
+			disCsstPath = "./dist/css",
+			srcJsPath = "./src/js/**/*.js",
+			distJsPath = "./dist/js",
+			srcHtmlPath = "./src/views/**/*.html",
+			distHtmlPath = "./dist/views",
+			srcImgPath = "./src/images/*",
+			distImgPath = "./dist/images";
+			srcFontPath = "./src/font/*",
+			distFontPath = "./dist/font";
 
-		// 执行方法
+		// 执行css方法
 		gulp.src(srcCssPath)
 			.pipe(less())
 			.pipe(cssMin())
 			.pipe(gulp.dest(disCsstPath));
 
-		// 设置路径
-		var srcJsPath = "./src/js/**/*.js",
-			distJsPath = "./dist/js";
-
-		// 执行方法
+		// 执行js方法
 		gulp.src(srcJsPath)
 			.pipe(uglify())
 			.pipe(gulp.dest(distJsPath));
 
+		// 执行html方法
+		gulp.src(srcHtmlPath)
+			.pipe(htmlMin({
+				removeComments: true,      // 清除HTML注释
+				collapseWhitespace: true,  // 压缩HTML
+				minifyJS: true,            // 压缩页面JS
+				minifyCSS: true            // 压缩页面CSS
+			}))
+			.pipe(gulp.dest(distHtmlPath));
+
+		// 执行images方法
+		gulp.src(srcImgPath)
+			.pipe(gulp.dest(distImgPath));
+
+		// 执行font方法
+		gulp.src(srcFontPath)
+			.pipe(gulp.dest(distFontPath));
+
+		// 延时2s执行合并文件方法
+		setTimeout(function(){
+			leanGulp.bulidConcat();
+		},2000);
+
 		// 执行完成提示
 		console.log("------------------------------------------------------------ bulidRes done!!!");
+
 	},
 
 	// 合并css、js
@@ -78,27 +108,6 @@ var teemoGulp = {
 		console.log("------------------------------------------------------------ bulidConcat done!!!");
 	},
 
-	// 打包HTML
-	bulidHtml:function(){
-
-		// 设置路径
-		var srcPath = "./src/views/**/*.html",
-			distPath = "./dist/views";
-
-		// 执行方法
-		gulp.src(srcPath)
-			.pipe(htmlMin({
-				removeComments: true,      // 清除HTML注释
-				collapseWhitespace: true,  // 压缩HTML
-				minifyJS: true,            // 压缩页面JS
-				minifyCSS: true            // 压缩页面CSS
-			}))
-			.pipe(gulp.dest(distPath));
-
-		// 执行完成提示
-		console.log("------------------------------------------------------------ bulidHtml done!!!");
-	},
-
 	// 版本号
 	bulidVersion:function(){
 
@@ -112,6 +121,29 @@ var teemoGulp = {
 
 		// 执行完成提示
 		console.log("------------------------------------------------------------ bulidVersion done!!!");
+	},
+
+	// CDN
+	bulidCDN:function(){
+
+		// 设置输出路径
+		var srcPath = "./dist/views/**/*.html",
+			distPath = "./dist/viewsCdn";
+
+		// 判断是否传递cdn
+		if(config.cdnPath){
+			gulp.src(srcPath)
+				.pipe(replace("../", ''))
+				.pipe(prefix(config.cdnPath, null, '{{'))
+				.pipe(gulp.dest(distPath));
+		}else{
+			gulp.src(srcPath)
+				.pipe(prefix(config.cdnPath, null, '{{'))
+				.pipe(gulp.dest(distPath));
+		}
+
+		// 执行完成提示
+		console.log("------------------------------------------------------------ bulidCDN done!!!");
 	},
 
 	// 打包IMG
@@ -138,57 +170,54 @@ var teemoGulp = {
 
 // 编译less、压缩js
 gulp.task("bulid-resource",function(){
-	teemoGulp.bulidRes();
+	leanGulp.bulidRes();
 });
 
 // 合并css、js
 gulp.task("bulid-concat",function(){
-	teemoGulp.bulidConcat();
-});
-
-// 打包HTML
-gulp.task("bulid-html",function(){
-	teemoGulp.bulidHtml();
+	leanGulp.bulidConcat();
 });
 
 // 版本号
 gulp.task("bulid-version",function(){
-	teemoGulp.bulidVersion();
+	leanGulp.bulidVersion();
 });
 
-// 打包IMG
-gulp.task("bulid-img",function(){
-	teemoGulp.bulidImg();
+// CDN
+gulp.task("bulid-cdn",function(){
+	leanGulp.bulidCDN();
 });
 
 // 清理dist下合并文件之外的css、js
 gulp.task("bulid-clean",function(){
-	teemoGulp.bulidClean();
+	leanGulp.bulidClean();
 });
 
 // help
 gulp.task("help",function(){
 
-	console.log(" > stept1 ----- gulp bulid-resource");
-	console.log(" > stept2 ----- gulp bulid-concat");
-	console.log(" > stept3 ----- gulp bulid-html");
-	console.log(" > stept4 ----- gulp bulid-version");
-	console.log(" > stept5 ----- gulp bulid-img");
-	console.log(" > stept6 ----- gulp bulid-clean");
+	console.log(" > gulp               ----- 代码构建到dist目录");
+	console.log(" > gulp bulid-version ----- 添加版本号");
+	console.log(" > gulp bulid-cdn     ----- 配置cdn地址(config.js中配置)");
+	console.log(" > gulp bulid-clean   ----- 清理压缩前的css、js");
 
 });
 
 // default
 gulp.task('default', function (done) {
 
+	// start
+	gulp.start("help","bulid-resource");
+
 	// 设置路径
 	var cssPath = "src/css/**/*.less",
-		jsPath = "src/js/**/*.js";
+		jsPath = "src/js/**/*.js",
+		htmlPath = "src/views/**/*.html";
 
 	// 监听css、js变化
-	gulp.watch([cssPath,jsPath],function(){
+	gulp.watch([cssPath,jsPath,htmlPath],function(){
 		console.log("change.......................................");
-		gulp.start("bulid-resource","bulid-concat","bulid-version");
+		gulp.start("bulid-resource");
 	});
 
 });

@@ -10,12 +10,14 @@
   "license": "ISC",
   "private": true,
   "devDependencies": {
-    "gulp": "^3.9.0",
     "del": "^2.2.2",
+    "gulp": "^3.9.0",
     "gulp-clean-css": "^3.4.1",
     "gulp-concat": "^2.6.1",
     "gulp-htmlmin": "^3.0.0",
     "gulp-less": "^3.3.0",
+    "gulp-prefix": "0.0.15",
+    "gulp-replace": "^0.5.4",
     "gulp-rev-doc": "0.0.4",
     "gulp-uglify": "^3.0.0",
     "vinyl-paths": "^2.1.0"

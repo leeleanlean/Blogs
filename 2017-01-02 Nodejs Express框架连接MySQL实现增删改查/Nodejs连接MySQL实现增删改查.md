@@ -135,3 +135,40 @@ connection.end(function(err){
 	console.log('[connection end] succeed!');
 });
 ```
+
+##修改mysql的编码方式可以有以下几个：
+
+####1.通过配置文件修改my.ini(windows下)或/etc/my.cnf(linux下)
+分别添加如下内容
+```
+[mysqld]
+character_server_set=utf8
+[mysql]
+default-character-set=utf8
+[mysql.server]
+default-character-set=utf8
+[mysql_safe]
+default-character-set=utf8
+[client]
+default-character-set=utf8
+```
+####2.创建数据库时设置编码
+```
+create database test character set utf8;
+```
+####3.创建表时设置编码
+```
+create table test(id int primary key)DEFAULT charset=utf8;
+```
+####4.修改数据库编码
+```
+alter database test character set utf8;
+```
+####5.修改表默认编码
+```
+alter table test character set utf8;
+```
+####6.修改字段编码
+```
+alter table test modify col_name varchar(50) CHARACTER SET utf8;
+```

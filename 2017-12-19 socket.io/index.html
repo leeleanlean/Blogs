@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title></title>
+</head>
+<body>
+
+<p>Index.html</p>
+<p>接收到后端通知后，直接跳转页面</p>
+<p>- 默认10s后端发送通知</p>
+
+<script src="/socket.io/socket.io.js"></script>
+<script>
+var socket = io();
+socket.on('getData', function (data) {
+    console.log(data.count);
+    window.location.href = "http://www.baidu.com";
+});
+</script>
+
+</body>
+</html>

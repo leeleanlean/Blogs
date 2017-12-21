@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Document</title>
+</head>
+<body>
+
+<p>Index.html</p>
+<p>接收到后端通知后，直接跳转页面</p>
+<p id="time"></p>
+
+<script src="socket.io.js"></script>
+<script>
+var socket = io.connect('http://172.16.3.142:3000');
+
+socket.on('doRefresh', function (data) {
+    console.log(123123123);
+    window.location.href = "http://www.baidu.com";
+});
+
+// time
+var setDate = function(){
+	var data = new Date();
+	document.getElementById('time').innerHTML = data.toLocaleString();
+}
+setDate();
+// 定时器
+setInterval(function(){
+	setDate();
+},1000)
+</script>
+
+</body>
+</html>

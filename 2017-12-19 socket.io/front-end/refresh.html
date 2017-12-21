@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Document</title>
+</head>
+<body>
+
+<p id="btn">点击发送socket通知</p>
+
+<script src="socket.io.js"></script>
+<script>
+var socket = io.connect('http://172.16.3.142:3000');
+
+btn.onclick = function(){
+	socket.emit('refresh');
+}
+</script>
+
+</body>
+</html>

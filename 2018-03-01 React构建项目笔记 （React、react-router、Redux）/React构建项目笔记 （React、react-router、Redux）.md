@@ -1,6 +1,16 @@
 # React构建项目笔记 （React、react-router、Redux）
 
-[toc]
+- 笔记目录
+
+  - 项目目录结构
+  - 安装 React
+  - JSX基础语法
+  - 添加less配置
+  - React 生命周期
+  - 跨域请求数据
+  - 路由配置 (react-router)
+  - 状态管理 Redux
+  - 封装Fetch请求数据
 
 ## 项目目录结构
 
@@ -221,7 +231,7 @@ react性能优化非常重要的一环。组件接受新的state或者props时�
 ```
 "proxy": {
   "/v2/api/": {
-    "target": "http://c.qianka.com",
+    "target": "http://www.xxxxxx.com",
     "changeOrigin": true
   }
 },

@@ -1,0 +1,12 @@
+{
+  "devDependencies": {
+    "css-loader": "^1.0.0",
+    "style-loader": "^0.23.0",
+    "webpack": "^4.17.1",
+    "webpack-cli": "^3.1.0",
+    "webpack-dev-server": "^3.1.7"
+  },
+  "scripts": {
+    "server": "webpack-dev-server --mode development"
+  }
+}

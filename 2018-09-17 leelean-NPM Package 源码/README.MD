@@ -2,7 +2,7 @@
 
 ### Github
 
-
+[Github仓库地址](https://github.com/leeleanlean/Blogs/tree/gh-pages/2018-09-17%20leelean-NPM%20Package%20%E6%BA%90%E7%A0%81?_blank)
 
 ## 组件
 

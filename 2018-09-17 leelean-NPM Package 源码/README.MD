@@ -58,6 +58,7 @@ value: flex-start | flex-end | center | baseline | stretch;
 多横轴情况下，对齐方式
 <br>
 value: flex-start | flex-end | center | space-between | space-around | stretch;
+
 ```
 <l-flex
   :option="{

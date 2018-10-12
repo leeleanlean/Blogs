@@ -1,8 +1,5 @@
+### String
 ```
-/*
-* String
-*/
-
 //随机产生一个中文的姓名
 name: Mock.Random.cname()
 
@@ -15,11 +12,10 @@ time: Mock.Random.date('yyyy-MM-dd mm:hh:ss')
 
 //随机生成一个邮箱
 email: Mock.mock('@EMAIL()')
+```
 
-/*
-* Number
-*/
-
+### Number
+```
 //1开始，递增
 'id|+1': 1
 
@@ -34,11 +30,10 @@ sex: Mock.Random.integer(0, 1)
 
 //随机生成一个11位的手机号
 mobile: /^1[0-9]{10}$/
+```
 
-/*
-* Array
-*/
-
+### Array
+```
 // 随机生成一个固定/随机（10/1-10）长度的数组
 'array|10': [
   {

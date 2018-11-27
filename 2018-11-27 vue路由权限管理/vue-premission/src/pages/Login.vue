@@ -13,7 +13,6 @@
         <button @click="login">登录</button>
       </div>
     </div>
-    <button @click="$router.push('/lee')">lee</button>
   </div>
 </template>
 
@@ -44,13 +43,24 @@ export default {
         let { username, menu } = res
         console.log(username, menu)
 
-        let newRoutes = router.options.routes.concat([{
-          path: '/lee',
-          component: resolve => require(['@/pages/Lee'], resolve)
-        }])
+        let resRoutes = []
+        menu.forEach(item => {
+          resRoutes.push({
+            path: item.path,
+            component: resolve => require([`.${item.path}`], resolve)
+          })
+        })
+        console.log('resRoutes', resRoutes)
+
+        let newRoutes = router.options.routes.concat(resRoutes)
+
+        console.log('newRoutes', newRoutes)
+
         router.addRoutes(newRoutes)
 
-        this.$router.push('/lee')
+        console.log('router', router)
+
+        this.$router.push('/Index')
       }).catch(err => {
         console.log(err)
       })

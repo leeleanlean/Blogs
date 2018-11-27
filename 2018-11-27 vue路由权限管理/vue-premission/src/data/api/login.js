@@ -7,9 +7,8 @@ export let login = (params) => {
         username: 'admin',
         menu: [
           {
-            path: '/Lee',
-            name: 'Lee',
-            filePath: '@/pages/Lee'
+            path: '/Admin',
+            name: 'Admin'
           }
         ]
       })
@@ -18,32 +17,8 @@ export let login = (params) => {
         username: 'guest',
         menu: [
           {
-            label: 'guest-1',
-            value: '/guest-1',
-            child: [
-              {
-                label: 'guest-1-1',
-                value: '/guest-1-1'
-              },
-              {
-                label: 'guest-1-2',
-                value: '/guest-1-2'
-              }
-            ]
-          },
-          {
-            label: 'guest-2',
-            value: '/guest-2',
-            child: [
-              {
-                label: 'guest-2-1',
-                value: '/guest-2-1'
-              },
-              {
-                label: 'guest-2-2',
-                value: '/guest-2-2'
-              }
-            ]
+            path: '/Guest',
+            name: 'Guest'
           }
         ]
       })

@@ -1,17 +1,18 @@
 <template>
   <div>
-    <div class="container">Home</div>
+    admin
   </div>
 </template>
 
 <script>
 export default {
+  name: 'Admin',
   data () {
     return {
     }
   },
   mounted () {
-    console.log('home')
+    console.log('admin')
   }
 }
 </script>

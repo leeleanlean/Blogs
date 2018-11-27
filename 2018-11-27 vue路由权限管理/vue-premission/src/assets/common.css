@@ -1,0 +1,49 @@
+html {
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+body {
+  font-family: 'PingFangSC-Regular', '-apple-system', 'Helvetica Neue', 'Roboto', 'Segoe UI', sans-serif;
+  font-size: 0.32rem;
+  max-width: 1000px;
+  margin: 0 auto;
+}
+
+img {
+  width: 100%;
+  max-width: 100%;
+}
+
+a, input, div {
+  -webkit-tap-highlight-color: transparent;
+}
+
+input, textarea {
+  -webkit-appearance: none;
+}
+
+i, em {
+  font-style: normal;
+}
+
+ul li, li {
+  list-style: none;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-size: .373333rem;
+  font-weight: normal;
+}
+
+div, section, article, dl, dt, dd, ul, li, h1, h2, h3, h4, h5, h6, p {
+  display: block;
+  box-sizing: border-box;
+  margin: 0;
+}
+
+ul {
+  padding: 0;
+}

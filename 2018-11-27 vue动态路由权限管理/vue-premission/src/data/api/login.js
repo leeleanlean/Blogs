@@ -5,6 +5,7 @@ export let login = (params) => {
     if (params.username === 'admin') {
       resolve({
         username: 'admin',
+        token: 'sfsfgjfgjsdfedfhgdhdh',
         menu: [
           {
             path: '/Admin',
@@ -28,6 +29,7 @@ export let login = (params) => {
     } else if (params.username === 'guest') {
       resolve({
         username: 'guest',
+        token: '18342879248794238691263',
         menu: [
           {
             path: '/Guest',

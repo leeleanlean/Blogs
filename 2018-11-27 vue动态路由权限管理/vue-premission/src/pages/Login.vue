@@ -25,7 +25,6 @@
 <script>
 
 import { login } from '@/data/api/login'
-import router from '@/router'
 
 export default {
   data () {
@@ -36,82 +35,17 @@ export default {
       }
     }
   },
-  mounted () {
-    this.init()
-  },
   methods: {
-    init () {
-      // 如果有token，直接检验token
-      if (localStorage.vue_premission) {
-        this.checkToken(localStorage.vue_premission)
-      }
-    },
     login () {
       login(this.form).then(res => {
         // 登录成功后，获取并设置用户路由
-        let { username, menu } = res
-        this.setRoutes(username, menu)
+        const {username, menu} = res
+        console.log('username:', username, 'menu:', menu)
+        this.$store.dispatch('setUserInfo', res)
+        this.$router.push('/index')
       }).catch(err => {
         console.log(err)
       })
-    },
-
-    // 设置路由
-    setRoutes (username, menu) {
-      let resRoutes = []
-      menu.forEach(item => {
-        let itemComponent = resolve => require([`.${item.filePath}`], resolve)
-        resRoutes.push({
-          path: item.path,
-          name: item.name,
-          component: itemComponent,
-          children: item.children && item.children.map(i => {
-            let iComponent = resolve => require([`.${i.filePath}`], resolve)
-            return {
-              path: i.path,
-              name: i.name,
-              component: iComponent,
-              children: i.children && i.children.map(ii => {
-                let iiComponent = resolve => require([`.${ii.filePath}`], resolve)
-                return {
-                  path: ii.path,
-                  name: ii.name,
-                  component: iiComponent
-                }
-              })
-            }
-          })
-        })
-      })
-      let userRoutes = router.options.routes.concat(resRoutes)
-      router.addRoutes(userRoutes)
-
-      // 设置token
-      let VuePremission = {
-        token: username,
-        userRoutes
-      }
-      this.checkToken(JSON.stringify(VuePremission))
-      console.log('username:', username, 'menu:', menu, 'userRoutes:', userRoutes)
-    },
-
-    // 验证token
-    checkToken (VuePremission) {
-      // 判断localStorage是否有用户信息
-      if (!localStorage.vue_premission) {
-        localStorage.vue_premission = VuePremission
-        this.$router.push('/Index')
-        console.log(`-----localStorage.vue_premission Done!!!`)
-      } else {
-        // 用localStorage用户信息校验token
-        let token = JSON.parse(localStorage.vue_premission).token
-        if (token) {
-          this.$router.push('/Index')
-        } else {
-          localStorage.removeItem('vue_premission')
-          window.location.href = '/'
-        }
-      }
     }
   }
 }

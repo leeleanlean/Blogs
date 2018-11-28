@@ -16,6 +16,12 @@ import './assets/common.css'
 // 开发环境配置MOCK
 import './data/mock/index'
 
+// 拦截路由文件
+import './common/premission'
+
+// vuex
+import store from './store/index'
+
 Vue.config.productionTip = false
 
 // vue-moment
@@ -25,6 +31,7 @@ Vue.use(vueMoment)
 new Vue({
   el: '#app',
   router,
+  store,
   components: { App },
   template: '<App/>'
 })

@@ -1,18 +1,18 @@
 <template>
   <div>
-    admin
+    guest
+    <router-view></router-view>
   </div>
 </template>
 
 <script>
 export default {
-  name: 'Admin',
   data () {
     return {
     }
   },
   mounted () {
-    console.log('admin')
+    console.log('guest')
   }
 }
 </script>

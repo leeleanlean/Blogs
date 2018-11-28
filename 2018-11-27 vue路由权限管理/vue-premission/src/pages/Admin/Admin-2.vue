@@ -1,18 +1,17 @@
 <template>
   <div>
-    guest
+    admin-2
   </div>
 </template>
 
 <script>
 export default {
-  name: 'Guest',
   data () {
     return {
     }
   },
   mounted () {
-    console.log('guest')
+    console.log('admin-2')
   }
 }
 </script>

@@ -36,15 +36,21 @@ export default {
       }
     }
   },
+  mounted () {
+    this.init()
+  },
   methods: {
+    init () {
+      localStorage.removeItem('userInfo')
+    },
     login () {
       login(this.form).then(res => {
         // 登录成功后，获取并设置用户路由
         const {username, menu} = res
         console.log('username:', username, 'menu:', menu)
         localStorage.userInfo = JSON.stringify(res)
-        userRoutes(menu)
         this.$store.dispatch('setUserInfo', res)
+        userRoutes(menu)
         this.$router.push('/index')
       }).catch(err => {
         console.log(err)

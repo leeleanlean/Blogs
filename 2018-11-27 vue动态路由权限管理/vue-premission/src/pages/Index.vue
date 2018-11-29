@@ -66,7 +66,7 @@ export default {
     loginOut () {
       localStorage.removeItem('userInfo')
       this.$store.dispatch('clearUserInfo')
-      window.location.href = '/login'
+      window.location.href = '/'
     }
   }
 }

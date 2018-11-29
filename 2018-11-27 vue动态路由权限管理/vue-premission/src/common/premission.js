@@ -5,7 +5,6 @@ import { userRoutes } from '@/common/userRoutes'
 // 拦截路由
 router.beforeEach((to, from, next) => {
   const userInfo = store.state.premission.userInfo
-  debugger
   // 判断是否有token
   if (userInfo.token) {
     // 验证token
@@ -17,16 +16,20 @@ router.beforeEach((to, from, next) => {
     }
   } else {
     // 判断localStorage是否有用户信息
-    const userInfo = localStorage.userInfo ? JSON.parse(localStorage.userInfo) : ''
+    let userInfo = localStorage.getItem('userInfo') ? JSON.parse(localStorage.getItem('userInfo')) : ''
     if (userInfo) {
-      const token = userInfo.token
-      // 验证token
+      const {token, username, menu} = userInfo
+      // 验证tokezn
       if (checkToken(token)) {
         // 设置vuex
-        store.dispatch('setUserInfo', userInfo)
+        store.dispatch('setUserInfo', {token, username, menu})
         // 设置路由
-        userRoutes(userInfo.menu)
-        next()
+        userRoutes(menu).then(res => {
+          next(to.path)
+        }).catch(err => {
+          console.log(err)
+          to.path === '/login' ? next() : next('/login')
+        })
       } else {
         // 跳转登录
         to.path === '/login' ? next() : next('/login')

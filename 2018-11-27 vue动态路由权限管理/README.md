@@ -3,36 +3,62 @@
 
 ### 实现思路
 
-	- 判断localStorage中是否有token
-		↓
-		- 有token
-			↓
-			- 校验token
-				↓
-				- token校验成功
-					↓
-					- 跳转至首页
-				↓
-				- token校验失败
-					↓
-					- 删除localStorage中token
-						↓
-						- 重新判断localStorage中是否有token
-		↓
-		- 没有token
-			↓
-			- 表单登录
-				↓
-				- 登录成功，获取到用户路由配置
-					↓
-					- token设置到localStorage
-					- router.addRoutes 动态添加路由
-						↓
-						- 跳转至首页
-				↓
-				- 登录失败
-					↓
-					- 重新登录
+用户登录成后，把用户信息保存至localStorage 和 vuex，用addRutes动态添加路由。
+然后用 localStorage 和 vuex相结合，解决用户刷新路由无效问题
+
+```
+用户登录
+  ↓
+  - 成功
+    ↓
+    - 把用户信息保存至vuex
+    - 把用户信息保存至localStorage
+    - 用addRutes动态添加路由并跳转至首页
+  ↓
+  - 失败
+    ↓
+    - 继续登录
+
+拦截路由变化
+  ↓
+  - 判断vuex中是否有用户信息
+    ↓
+    - 有用户信息
+      ↓
+      - 验证token
+        ↓
+        - token验证通过
+          ↓
+          - 跳转路由
+        ↓
+        - token验证不通过
+          ↓
+          - 跳转登录页面
+    ↓
+    - 没有用户信息
+      ↓
+      - 判断localStorage中是否有用户信息
+        ↓
+        - 有用户信息
+          ↓
+          - 验证token
+            ↓
+            - token验证通过
+              ↓
+              - 获取localStorage用户信息
+                ↓
+                - 设置vuex中的用户信息
+                ↓
+                - 重新设置用户路由
+            ↓
+            - token验证不通过
+              ↓
+              - 跳转登录页面
+        ↓
+        - 没有用户信息
+          ↓
+          - 跳转登录
+```
 
 ### 实现代码
 

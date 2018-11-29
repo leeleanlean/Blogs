@@ -25,6 +25,7 @@
 <script>
 
 import { login } from '@/data/api/login'
+import { userRoutes } from '@/common/userRoutes'
 
 export default {
   data () {
@@ -41,6 +42,8 @@ export default {
         // 登录成功后，获取并设置用户路由
         const {username, menu} = res
         console.log('username:', username, 'menu:', menu)
+        localStorage.userInfo = JSON.stringify(res)
+        userRoutes(menu)
         this.$store.dispatch('setUserInfo', res)
         this.$router.push('/index')
       }).catch(err => {

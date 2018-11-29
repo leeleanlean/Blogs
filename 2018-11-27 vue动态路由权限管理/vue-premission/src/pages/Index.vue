@@ -6,15 +6,14 @@
     </dl>
     <hr>
     <dl>
-      <dt>用户名：{{user.token}}</dt>
+      <dt>用户名：{{user.username}}</dt>
     </dl>
     <hr>
     <dl class="menu">
-      <dt>{{user.token}} 用户的路由信息</dt>
+      <dt>{{user.username}} 用户的路由信息</dt>
       <dd
         :key="index"
-        v-for="(menu, index) in user.userRoutes"
-        v-if="index > 2">
+        v-for="(menu, index) in user.menu">
         <p @click="jumpLink(menu.path)">{{menu.name}}</p>
         <p
           :key="childIndex"
@@ -26,30 +25,35 @@
     </dl>
     <hr>
     <dl>
-      <dd @click="loginOut">退出 {{user.token}} 登录</dd>
+      <dd @click="loginOut">退出 {{user.username}} 登录</dd>
     </dl>
     <hr>
   </div>
 </template>
 
 <script>
+
+import { mapGetters } from 'vuex'
+
 export default {
   data () {
     return {
-      user: {},
-      menu: []
+      user: {}
     }
+  },
+  computed: {
+    ...mapGetters([
+      'userInfo'
+    ])
   },
   mounted () {
     this.init()
   },
   methods: {
-
     // 初始化
     init () {
-      let vuePremission = JSON.parse(localStorage.getItem('vue_premission'))
-      if (vuePremission) {
-        this.user = vuePremission
+      if (this.userInfo) {
+        this.user = this.userInfo
       }
     },
 
@@ -60,8 +64,9 @@ export default {
 
     // 退出登录
     loginOut () {
-      localStorage.removeItem('vue_premission')
-      window.location.href = '/'
+      localStorage.removeItem('userInfo')
+      this.$store.dispatch('clearUserInfo')
+      window.location.href = '/login'
     }
   }
 }

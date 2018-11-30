@@ -24,6 +24,7 @@
 
 <script>
 
+import { mapGetters } from 'vuex'
 import { login } from '@/data/api/login'
 import { userRoutes } from '@/common/userRoutes'
 
@@ -33,15 +34,34 @@ export default {
       form: {
         username: 'admin',
         password: '111111'
-      }
+      },
+      token: ''
     }
+  },
+  computed: {
+    ...mapGetters([
+      'userInfo'
+    ])
   },
   mounted () {
     this.init()
   },
   methods: {
     init () {
-      localStorage.removeItem('userInfo')
+      // 解决路由返回登录页面，vuex未清，再次登录路由缓存问题
+      let { token } = this.userInfo
+      if (token) {
+        this.token = this.userInfo.token
+        let checkToken = true
+        if (checkToken) {
+          this.$router.push('/index')
+        } else {
+          this.$store.dispatch('clearUserInfo')
+          window.location.href = '/#/login'
+        }
+      } else {
+        localStorage.removeItem('userInfo')
+      }
     },
     login () {
       login(this.form).then(res => {

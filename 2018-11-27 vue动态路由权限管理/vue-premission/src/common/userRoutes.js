@@ -27,6 +27,7 @@ export let userRoutes = (menu) => {
         })
       })
     })
+    debugger
     let userRoutes = router.options.routes.concat(resRoutes)
     router.addRoutes(userRoutes)
     resolve()

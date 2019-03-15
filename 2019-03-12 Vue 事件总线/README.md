@@ -44,11 +44,14 @@ Vue.prototype.$EventBus = new Vue()
 当我们创建好一个空的Vue实例之后，就可以在组件之间进行注册发送事件或接收事件
 
 发送事件：
+```
 this.$EventBus.$emit('event', 'data')
+```
 
 接收事件:
+```
 this.$EventBus.on('event', data => console.log(data))
-
+```
 
 ### 5. 注意
 在组件销毁前，应当清除该组件上对事件中心注册发送的事件

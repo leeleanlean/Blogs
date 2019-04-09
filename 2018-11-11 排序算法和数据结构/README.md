@@ -1,3 +1,6 @@
+## 排序算法和数据结构
+
+```
 // 获取随机数
 const randomArray = (total, name) => {
   return new Promise((resolve, reject) => {
@@ -213,3 +216,5 @@ randomArray(10, '二分搜索').then(obj => {
 * 数据结构 - 二叉查找树
 *
 */
+
+```

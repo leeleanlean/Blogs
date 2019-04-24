@@ -27,6 +27,7 @@ import ComponentMain from './components/Main'
 
 // 注册组件
 @Component({
+  name: 'Index',
   components: {
     ComponentHeader,
     ComponentMain
@@ -89,7 +90,7 @@ Template:
 <Header @emitClick="emitClick" />
 
 Script:
-emitClick (params:any) {
+emitClick (params:any):void {
   console.log(params)
 }
 ```
@@ -100,7 +101,7 @@ Template:
 
 Script:
 @Emit('emitClick')
-click () {
+click ():string {
   this.msg = 'leelean'
   return this.msg
 }
@@ -110,7 +111,7 @@ click () {
 > 监听数据变化
 ```
 @Watch('user', { immediate: true, deep: true })
-userChange (data:any) {
+userChange (data:any):void {
   console.log(data)
 }
 ```

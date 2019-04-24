@@ -27,6 +27,7 @@ import ComponentMain from './components/Main'
 
 // 注册组件
 @Component({
+  name: 'Index',
   components: {
     ComponentHeader,
     ComponentMain

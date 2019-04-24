@@ -96,7 +96,7 @@ Template:
 <Header @emitClick="emitClick" />
 
 Script:
-emitClick (params:any):void {
+private emitClick (params:any):void {
   console.log(params)
 }
 ```
@@ -107,7 +107,7 @@ Template:
 
 Script:
 @Emit('emitClick')
-click ():string {
+private click ():string {
   this.msg = 'leelean'
   return this.msg
 }

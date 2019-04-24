@@ -1,5 +1,5 @@
 ## vue-property-decorator使用说明
-> 在vue-cli3中typescript时，用此装饰器来简化书写。
+> 在vue-cli3中使用typescript，用此装饰器来简化书写。
 ```
 import {
   Component,

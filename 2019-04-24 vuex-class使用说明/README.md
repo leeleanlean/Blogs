@@ -1,132 +1,98 @@
-## vue-property-decorator使用说明
-> 在Vue中使用TypeScript时，使用装饰器来简化书写。
+## vuex-class使用说明
+> 在vue-cli3中.ts文件使用 vuex 时，用此装饰器来简化书写。
+
+### 引入依赖
 ```
 import {
-  Component,
-  Prop,
-  Model,
-  Watch,
-  Emit,
-  Inject,
-  Provide
-} from 'vue-property-decorator'
+  State,
+  Getter,
+  Action,
+  Mutation,
+  namespace
+} from 'vuex-class'
 ```
 
-### @Component
-> 引用组件
 
-父组件
+### 使用方法
+> vuex-class装饰器使用方法
+
 ```
-<script lang="ts">
-// 引入所需装饰器
-import { Vue, Component } from 'vue-property-decorator'
+@State('common') common!:any
+@State(state => state.common) userinfo!:any
+@Getter('userInfo') vUserInfo!:any
+@Action('setUserInfo') setUserInfo:any
+@Mutation('SER_USER_INFO') mSetUserInfo:any
 
-// 引入组件
-import ComponentHeader from './components/Header'
-import ComponentMain from './components/Main'
+created ():void {
+  console.log('common', this.common)
+  console.log('userinfo', this.userinfo)
+  console.log('vUserInfo', this.vUserInfo)
+  this.setUserInfo({})
+  this.mSetUserInfo({})
+}
+```
+### Store
+> 公共状态管理容器搭建过程
 
-// 注册组件
-@Component({
-  name: 'Index',
-  components: {
-    ComponentHeader,
-    ComponentMain
+main.js
+```
+import store from './store/index'
+```
+
+./store/index
+```
+import Vue from 'vue'
+import vuex from 'vuex'
+
+import common from './common/index'
+
+Vue.use(vuex)
+
+export default new vuex.Store({
+  modules: {
+    common: common
   }
 })
-</script>
-
-// 默认导出
-export default class Index extends Vue {}
 ```
 
-子组件
+./store/common/index
 ```
-<script lang="ts">
-import {
-  Vue,
-  Component
-} from 'vue-property-decorator'
-
-@Component
-export default class IndexMain extends Vue {}
-</script>
-```
-
-### @Prop
-> 父组件向子组件传值
-
-父组件
-```
-Template:
-<Main :user="user" />
-
-Script:
-user:object = {
-  info: {
-    age: 20,
-    name: 'lean'
+export default {
+  state: {
+    userInfo: {
+      username: 'Lean',
+      token: 'dhjwkehfsgasadsdasasd',
+      age: 20
+    }
   },
-  sex: 1,
-  location: 'ShangHai'
-}
-```
+  getters: {
+    userInfo: (state:any) => {
+      return state.userInfo
+    }
+  },
+  mutations: {
+    // 设置用户信息
+    SER_USER_INFO(state:any, data:any) {
+      data.clear
+        ? state.userInfo = {}
+        : state.userInfo = Object.assign({}, state.userInfo, data)
+    },
 
-子组件
-```
-@Prop({
-  type: Object,
-  default: () => {
-    return {}
+    // 清空用户信息
+    CLEAR_USER_INFO(state: any) {
+      state.userInfo = ''
+    }
+  },
+  actions: {
+    // 设置用户信息
+    setUserInfo({ commit, state }: any, data: any) {
+      commit('SER_USER_INFO', data)
+    },
+
+    // 清空用户信息
+    clearUserInfo({ commit, state }: any, data: any) {
+      commit('CLEAR_USER_INFO')
+    }
   }
-})
-user!: object
-```
-### @Emit
-> 子组件向父组件传值
-
-父组件
-```
-Template:
-<Header @emitClick="emitClick" />
-
-Script:
-emitClick (params:any) {
-  console.log(params)
 }
 ```
-子组件
-```
-Template:
-<div @click="click">Click</div>
-
-Script:
-@Emit('emitClick')
-click () {
-  this.msg = 'leelean'
-  return this.msg
-}
-```
-
-### @Watch
-> 监听数据变化
-```
-@Watch('user', { immediate: true, deep: true })
-userChange (data:any) {
-  console.log(data)
-}
-```
-### @Model
-
-特点：
-v-model 会把 value 用作 prop 且把 input 用作 event，使用 model 选项可以回避使用 value prop 产生的冲突
-
-缺点：
-使用场景比较少
-
-### @Provide / @Inject
-
-特点：
-在上层级的声明的provide，往下层无论多深都能通过inject来访问到provide的数据
-
-缺点：
-在任意层级都能访问导致数据追踪比较困难，不建议使用

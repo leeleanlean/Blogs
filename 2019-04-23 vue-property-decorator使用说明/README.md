@@ -80,6 +80,12 @@ user:object = {
   }
 })
 user!: object
+
+@Prop({
+  type: Number,
+  default: 1
+})
+readonly sex!:number
 ```
 ### @Emit
 > 子组件向父组件传值

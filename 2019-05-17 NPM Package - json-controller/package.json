@@ -1,0 +1,15 @@
+{
+  "name": "json-controller",
+  "version": "0.1.1",
+  "description": "This plug-in can be used to filter json, reset parameter names, and reset parameter values for front-end and back-end interactions.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "json",
+    "filter"
+  ],
+  "author": "Lean",
+  "license": "ISC"
+}

@@ -32,7 +32,6 @@ let data = JsonController(this.payload, {
 ## Filter JSON
 When front-end and back-end data interact, the back-end returns many fields. The front-end only needs some fields. This method can be used to filter data.
 
-Example:
 ```
 this.payload = {
   errCode: 0,
@@ -61,7 +60,6 @@ this.payload = {
 ## Reset Key
 Sometimes, for example, the field names defined by the front end and the field names defined by the back end are not uniform. This method can be used to modify the field names.
 
-Example:
 ```
 this.payload = {
   errCode: 0,
@@ -95,7 +93,6 @@ this.payload = {
 
 You can use this method to modify the value of a field
 
-Example:
 ```
 this.payload = {
   errCode: 0,

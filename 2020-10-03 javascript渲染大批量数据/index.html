@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>javascript渲染大批量数据</title>
+<style>
+* {
+  margin: 0; padding: 0;
+}
+</style>
+</head>
+<body>
+
+<!-- box -->
+<div id="box"></div>
+
+<script>
+window.onload = () => {
+
+  const renderBigDta = {
+    // 总条数
+    TOTAL: 100000,
+    // 每次渲染数
+    PAGE: 100,
+
+    // 分段执行setTimeout
+    loop () {
+      for (let i = 0; i < this.TOTAL/this.PAGE; i++) {
+        setTimeout(() => {
+          this.render((i + 1) * this.PAGE)
+        })
+      }
+    },
+
+    // 渲染DOM
+    render (p) {
+      // 渲染次数标记
+      const h3 = document.createElement('h3')
+      h3.innerText = `第${p/this.PAGE}次渲染`
+      box.append(h3)
+
+      // 每次渲染的数据
+      for (let i = p - this.PAGE; i < p; i++) {
+        const li = document.createElement('li')
+        li.innerText = i
+        box.append(li)
+      }
+    },
+
+    // 初始化
+    init () {
+      this.loop()
+    }
+  }
+
+  renderBigDta.init()
+}
+</script>
+</body>
+</html>

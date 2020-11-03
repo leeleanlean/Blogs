@@ -4,7 +4,7 @@
  * @Author: Lean
  * @Date: 2020-05-16 23:00:29
  * @LastEditors: Lean
- * @LastEditTime: 2020-05-21 17:50:27
+ * @LastEditTime: 2020-05-22 17:48:46
  -->
 # Java Basics
 
@@ -260,4 +260,96 @@ class MyClass {
     v1.horn();
   }
 }
+```
+
+## 3. Others
+
+#### 3.1 Exception Handling
+```
+try {
+  //some code
+} catch (ExceptionType1 e1) {
+  //Catch block
+} catch (ExceptionType2 e2) {
+  //Catch block
+} catch (ExceptionType3 e3) {
+  //Catch block
+}
+```
+
+#### 3.2 Threads
+```
+class Loader extends Thread {
+  public void run() {
+    System.out.println("Hello");
+  }
+}
+class MyClass {
+  public static void main(String[ ] args) {
+    Loader obj = new Loader();
+    obj.start();
+  }
+}
+
+class Loader implements Runnable {
+  public void run() {
+    System.out.println("Hello");
+  }
+}
+class MyClass {
+  public static void main(String[ ] args) {
+    Thread t = new Thread(new Loader());
+    t.start();
+  }
+}
+```
+
+#### Iterators
+```
+import java.util.Iterator;
+import java.util.ArrayList;
+
+class HelloWorld {
+  public static void main(String[] args) {
+    
+    ArrayList <String> names = new ArrayList<String>();
+    names.add("a");
+    names.add("b");
+    names.add("c");
+
+    Iterator <String> name = names.iterator();
+
+    while (name.hasNext()) {
+      System.out.println(name.next());
+    }
+
+  }
+}
+```
+
+#### Files
+```
+// 创建目录
+File file = new File("./data/games");
+file.mkdirs()
+
+// 删除目录
+File file = new File("./data/games");
+file.delete()
+
+// 创建一个文件
+File file = new File("./data/games");
+if (file.exists()) {
+  try {
+    BufferedWriter bw = new BufferedWriter(new FileWriter("./data/games/index.txt"));
+    bw.write("Hello Java I/O!");
+    bw.close();
+  } catch (Exception e) {
+    System.out.println(e);
+  }
+} else {
+  file.mkdirs();
+}
+
+// 读取文件
 ```

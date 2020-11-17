@@ -1,6 +1,6 @@
 ## 使用switch计算折扣
 ```
-public class Example8 {
+public class Example {
   public static void main(String[] args) {
     float money = 200;
     if (money >= 200) {

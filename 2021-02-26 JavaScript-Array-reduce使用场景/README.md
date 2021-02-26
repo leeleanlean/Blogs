@@ -1,11 +1,19 @@
 # JavaScript-Array-reduce使用场景
 
-## 计算总和
+## 累计计算
 ```
 const numbers = [1, 2, 1, 3, 4, 4, 3, 2, 3, 6, 1.5]
-const compute = numbers => numbers.reduce((pre, cur) => pre + cur)
-console.log(compute(numbers))
+const compute = (numbers, callback) => numbers.reduce((pre, cur) => callback(pre, cur))
+console.log(compute(numbers, (pre, cur) => pre + cur))
+console.log(compute(numbers, (pre, cur) => pre - cur))
+console.log(compute(numbers, (pre, cur) => pre * cur))
+console.log(compute(numbers, (pre, cur) => pre / cur))
+console.log(compute(numbers, (pre, cur) => pre % cur))
 // 30.5
+// -28.5
+// 15552
+// 0.00006430041152263374
+// 0
 ```
 
 ## 数组去重

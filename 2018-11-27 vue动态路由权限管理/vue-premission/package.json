@@ -16,7 +16,7 @@
   "dependencies": {
     "axios": "^0.18.0",
     "mockjs": "^1.0.1-beta3",
-    "npm": "^6.4.1",
+    "npm": "^6.14.6",
     "sass-loader": "^7.1.0",
     "scss": "^0.2.4",
     "scss-loader": "^0.0.1",
